@@ -256,9 +256,10 @@ sub new
        if (/^StartCharMetrics/ .. /^EndCharMetrics/) {
 	   # only lines that start with "C" or "CH" are parsed
 	   next unless /^CH?\s/;
-	   my($name) = /\bN\s+(\w+)\s*;/;
+	   my($name) = /\bN\s+(\.?\w+)\s*;/;
 	   my($wx)   = /\bWX\s+(\d+)\s*;/;
-	   my($bbox)    = /\bB\s+([^;]+)\s*;/;
+	   my($bbox)    = /\bB\s+([^;]+);/;
+	   $bbox =~ s/\s+$//;
 	   # Should also parse lingature data (format: L successor lignature)
 	   $this->{'wx'}{$name} = $wx;
 	   $this->{'bbox'}{$name} = $bbox;
@@ -279,8 +280,10 @@ sub new
        }
    }
    close(AFM);
-   $this->{wx}->{'.notdef'} = 0;
-   $this->{bbox}{'.notdef'} = "0 0 0 0";
+   unless (exists $this->{wx}->{'.notdef'}) {
+       $this->{wx}->{'.notdef'} = 0;
+       $this->{bbox}{'.notdef'} = "0 0 0 0";
+   }
    $this;
 }
 
