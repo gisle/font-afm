@@ -237,14 +237,19 @@ foreach (@metrics_path) { s,/$,, }    # reove trailing slashes
 sub new
 {
    my($class, $fontname) = @_;
+   my $file;
    $fontname =~ s/.amf$//;
-   my $file = "$fontname.afm";
-   unless ($file =~ m,^/,) {
-       # not absolute, search the metrics path for the file
-       foreach (@metrics_path) {
-	   if (-f "$_/$file") {
-	       $file = "$_/$file";
-	       last;
+   if ($^O eq 'VMS') {
+       $file = "sys\$ps_font_metrics:$fontname.afm";
+   } else {
+       $file = "$fontname.afm";
+       unless ($file =~ m,^/,) {
+	   # not absolute, search the metrics path for the file
+	   foreach (@metrics_path) {
+	       if (-f "$_/$file") {
+		   $file = "$_/$file";
+		   last;
+	       }
 	   }
        }
    }
