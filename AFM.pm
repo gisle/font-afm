@@ -1,5 +1,5 @@
 # This -*- perl -*-  module is a simple parser for Adobe Font Metrics files.
-# $Id$
+# $Id: AFM.pm,v 1.19 2004/01/08 12:48:50 gisle Exp $
 
 package Font::AFM;
 
@@ -187,7 +187,7 @@ use Carp;
 use strict;
 use vars qw($VERSION @ISOLatin1Encoding);
 
-$VERSION = sprintf("%d.%02d", q$Revision$ =~ /(\d+)\.(\d+)/);
+$VERSION = sprintf("%d.%02d", q$Revision: 1.19 $ =~ /(\d+)\.(\d+)/);
 
 
 # The metrics_path is used to locate metrics files

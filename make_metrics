@@ -1,6 +1,6 @@
 #!/usr/local/bin/perl -w
 
-# $Id$
+# $Id: make_metrics,v 1.3 1998/03/25 12:59:53 aas Exp $
 #
 # This program creates metrics modules for some fonts and place them
 # under the "Metrics" directory.
