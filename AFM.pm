@@ -315,8 +315,8 @@ sub stringwidth
 
     my @wx = $self->latin1_wx_table;
     my $width = 0.0;
-    while ($string =~ /(.)/g) {
-	$width += $wx[ord($1)];
+    for (unpack("C*", $string)) {
+	$width += $wx[$_];
     }
     if ($pointsize) {
 	$width *= $pointsize / 1000;
