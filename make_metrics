@@ -28,7 +28,8 @@ require Font::AFM;
 
 $0 =~ s,.*/,,;
 
-mkdir("Metrics", 0755);
+use File::Path qw(mkpath);
+mkpath("lib/Font/Metrics", 1, 0755);
 
 for $font (@FONTS) {
     eval {
@@ -42,7 +43,7 @@ for $font (@FONTS) {
     
     ($fontmod = $font) =~ s/-//g;
 
-    open(FONTDEF, ">Metrics/$fontmod.pm") or die "Can't open $fontmod.pm: $!";
+    open(FONTDEF, ">lib/Font/Metrics/$fontmod.pm") or die "Can't open $fontmod.pm: $!";
     select FONTDEF;
     print "# Font metrics for $font\n#\n";
     print "# DO NOT EDIT!!!\n";
@@ -56,7 +57,7 @@ for $font (@FONTS) {
     print "\@wx = (\n";
     $i = 0;
     for (@wx) {
-	printf " %.3g,", $_ / 1000;
+	printf " %-6s", sprintf "%.3g,", $_ / 1000;
 	unless (++$i % 8) {
 	    print "\n";
 	}
