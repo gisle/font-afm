@@ -19,7 +19,7 @@ Font::AFM - Interface to Adobe Font Metrics files
 =head1 DESCRIPTION
 
 This module implements the Font::AFM class. Objects of this class are
-initialised from an AFM-file and allows you to obtain information
+initialised from an AFM (Adobe Font Metrics) file and allow you to obtain information
 about the font and the metrics of the various glyphs in the font.
 
 All measurements in AFM files are given in terms of units equal to
@@ -33,17 +33,17 @@ The following methods are available:
 
 =item $afm = Font::AFM->new($fontname)
 
-Object constructor. Takes the name of the font as argument. It will
-croak if the font can not be found.
+Object constructor. Takes the name of the font as argument.
+Croaks if the font can not be found.
 
 =item $afm->latin1_wx_table()
 
-Returns a 256 element array, where each element contains the width
+Returns a 256-element array, where each element contains the width
 of the corresponding character in the iso-8859-1 character set.
 
 =item $afm->stringwidth($string, [$fontsize])
 
-Returns the width of the string passed as argument. The string is
+Returns the width of the argument string. The string is
 assumed to be encoded in the iso-8859-1 character set.  A second
 argument can be used to scale the width according to the font size.
 
@@ -60,14 +60,14 @@ Unique, human-readable name for an individual font, for instance
 =item $afm->FamilyName
 
 Human-readable name for a group of fonts that are stylistic variants
-of a single design. All fonts that are member of such a group should
+of a single design. All fonts that are members of such a group should
 have exactly the same C<FamilyName>. Example of a family name is
 "Times".
 
 =item $afm->Weight
 
 Human-readable name for the weight, or "boldness", attribute of a font.
-Exampes are C<Roman>, C<Bold>, C<Light>.
+Examples are C<Roman>, C<Bold>, C<Light>.
 
 =item $afm->ItalicAngle
 
@@ -76,7 +76,7 @@ vertical strokes of the font.
 
 =item $afm->IsFixedPitch
 
-If the value is C<true>, it indicated that the font is a fixed-pitch
+If C<true>, the font is a fixed-pitch
 (monospaced) font.
 
 =item $afm->FontBBox
@@ -90,7 +90,7 @@ origins coincident, and then painted.
 =item $afm->UnderlinePosition
 
 Recommended distance from the baseline for positioning underline
-stokes. This number is the y coordinate of the center of the stroke.
+strokes. This number is the y coordinate of the center of the stroke.
 
 =item $afm->UnderlineThickness
 
@@ -137,7 +137,7 @@ Returns a hash table that maps from glyph names to the width of that glyph.
 =item $afm->BBox
 
 Returns a hash table that maps from glyph names to bounding box information.
-The bounding box consist of 4 numbers: llx, lly, urx, ury.
+The bounding box consist of four numbers: llx, lly, urx, ury.
 
 =item $afm->dump
 
@@ -149,7 +149,7 @@ be useful for debugging.
 
 The AFM specification can be found at:
 
-   ftp://ftp.adobe.com/pub/adobe/DeveloperSupport/TechNotes/PSfiles/5004.AFM_Spec.ps
+   http://partners.adobe.com/asn/developer/pdfs/tn/5004.AFM_Spec.pdf
 
 
 =head1 ENVIRONMENT
@@ -158,7 +158,7 @@ The AFM specification can be found at:
 
 =item METRICS
 
-Contains the path to seach for AFM-files.  Format is as for the PATH
+Contains the path to search for AFM-files.  Format is as for the PATH
 environment variable. The default path built into this library is:
 
  /usr/lib/afm:/usr/local/lib/afm:/usr/openwin/lib/fonts/afm/:.
@@ -168,7 +168,7 @@ environment variable. The default path built into this library is:
 
 =head1 BUGS
 
-Kerning data and composite character data is not yet parsed.
+Kerning data and composite character data are not yet parsed.
 Ligature data is not parsed.
 
 
