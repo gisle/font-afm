@@ -1,7 +1,7 @@
 require Font::AFM;
 
 eval {
-   $font = new Font::AFM "Helvetica";
+   $font = Font::AFM->new("Helvetica");
 };
 if ($@) {
    if ($@ =~ /Can't find the AFM file for/) {
