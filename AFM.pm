@@ -6,10 +6,6 @@ package AFM;
 #
 # Author: Gisle Aas <aas@oslonett.no>
 
-require Exporter;
-@ISA = qw(Exporter);
-@EXPORT_OK = qw(@ISOLatin1Encoding);
-
 use Carp;
 
 # The metrics_path is used to locate metrics files
@@ -104,10 +100,25 @@ sub new
 }
 
 # Returns an 256 element array that maps from characters to width
-
 sub latin1_wx_table
 {
-    map {$_[0]->{wx}->{$ISOLatin1Encoding[$_]}} 0..255;
+    my($this) = @_;
+    unless ($this->{'_wx_table'}) {
+	$this->{'_wx_table'} =
+	    [ map {$this->{wx}->{$ISOLatin1Encoding[$_]}} 0..255 ];
+    }
+    @{ $this->{'_wx_table'} };
+}
+
+sub stringwidth
+{
+    my($this, $string, $pointsize) = @_;
+    my @wx = $this->latin1_wx_table;
+    my $width = 0.0;
+    while ($string =~ /./g) {
+	$width += $wx[ord $&];
+    }
+    $width;
 }
 
 sub FontName;
