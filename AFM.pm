@@ -263,11 +263,11 @@ sub new
        next if /^StartComposites/ .. /^EndComposites/; # same for composites
        if (/^StartCharMetrics/ .. /^EndCharMetrics/) {
 	   # only lines that start with "C" or "CH" are parsed
-	   next unless /^CH?\s/;  
+	   next unless /^CH?\s/;
 	   my($name) = /\bN\s+(\w+)\s*;/;
 	   my($wx)   = /\bWX\s+(\d+)\s*;/;
 	   my($bbox)    = /\bB\s+([^;]+)\s*;/;
-           # Should also parse lingature data (format: L successor lignature)
+	   # Should also parse lingature data (format: L successor lignature)
 	   $this->{'wx'}{$name} = $wx;
 	   $this->{'bbox'}{$name} = $bbox;
 	   next;
