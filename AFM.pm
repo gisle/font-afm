@@ -389,40 +389,4 @@ sub dump
     }
 }
 
-
-####################################################################
-#
-# S E L F   T E S T   S E C T I O N
-#
-#####################################################################
-#
-# If we're not use'd or require'd execute self-test.
-# Handy for regression testing and as a quick reference :)
-#
-# Test is kept behind __END__ so it doesn't take uptime
-# and memory  unless explicitly required. If you're working
-# on the code you might find it easier to comment out the
-# eval and __END__ so that error line numbers make more sense.
-
-package main;
-
-eval join('',<DATA>) || die $@ unless caller();
-
-1;
-
-__END__
-
-
-$font = new Font::AFM "Helvetica";
-
-$sw = $font->stringwidth("Gisle Aas");
-
-if ($sw != 4279) {
-    warn "self test failed";
-    die  "The stringwidth of 'Gisle Aas' should be 4279 (is was $sw)\n";
-}
-
-print "Self test for Font::AFM $Font::AFM::VERSION ok\n";
-
-
 1;
