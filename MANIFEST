@@ -17,3 +17,4 @@ lib/Font/Metrics/TimesItalic.pm
 lib/Font/Metrics/TimesRoman.pm
 make_metrics
 t/afm.t
+t/times.t
