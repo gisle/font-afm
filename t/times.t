@@ -1,7 +1,10 @@
 # This test is here basically to work around Test::Harness bug.
 
-print "1..1\n";
+print "1..2\n";
 require Font::Metrics::TimesRoman;
+
+print "not " unless @Font::Metrics::TimesRoman::wx == 256;
+print "ok 1\n";
 
 sub width
 {
@@ -15,4 +18,4 @@ sub width
 
 print "not " unless
     abs(width("Perl", \@Font::Metrics::TimesRoman::wx) - 1.611) < 1.0e-6;
-print "ok 1\n";
+print "ok 2\n";
