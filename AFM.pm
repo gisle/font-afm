@@ -238,7 +238,7 @@ sub new
 {
    my($class, $fontname) = @_;
    my $file;
-   $fontname =~ s/.amf$//;
+   $fontname =~ s/\.afm$//;
    if ($^O eq 'VMS') {
        $file = "sys\$ps_font_metrics:$fontname.afm";
    } else {
