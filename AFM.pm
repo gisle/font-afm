@@ -113,10 +113,16 @@ sub latin1_wx_table
 sub stringwidth
 {
     my($this, $string, $pointsize) = @_;
+    return 0.0 unless defined $string;
+    return 0.0 unless length $string;
+
     my @wx = $this->latin1_wx_table;
     my $width = 0.0;
     while ($string =~ /./g) {
 	$width += $wx[ord $&];
+    }
+    if ($pointsize) {
+	$width *= $pointsize / 1000;
     }
     $width;
 }
