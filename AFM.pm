@@ -174,7 +174,7 @@ Ligature data is not parsed.
 
 =head1 COPYRIGHT
 
-Copyright 1995-1997 Gisle Aas. All rights reserved.
+Copyright 1995-1998 Gisle Aas. All rights reserved.
 
 This program is free software; you can redistribute it and/or modify
 it under the same terms as Perl itself.
@@ -370,7 +370,7 @@ sub AUTOLOAD
 }
 
 
-# Dumping might be usefull for debugging
+# Dumping might be useful for debugging
 
 sub dump
 {
