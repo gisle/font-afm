@@ -18,3 +18,4 @@ lib/Font/Metrics/TimesRoman.pm
 make_metrics
 t/afm.t
 t/times.t
+META.yml                                 Module meta-data (added by MakeMaker)

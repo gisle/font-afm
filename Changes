@@ -1,3 +1,11 @@
+2008-06-05   Gisle Aas <gisle@ActiveState.com>
+
+   Release 1.20
+
+   Improved TAP output from test.  Patch by Andy Armstrong.
+
+
+
 2004-01-08   Gisle Aas <gisle@ActiveState.com>
 
    Release 1.19
