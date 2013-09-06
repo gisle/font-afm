@@ -194,7 +194,7 @@ $VERSION = "1.20";
 my $metrics_path = $ENV{METRICS} ||
     "/usr/lib/afm:/usr/local/lib/afm:/usr/openwin/lib/fonts/afm/:.";
 my @metrics_path = split(/:/, $metrics_path);
-foreach (@metrics_path) { s,/$,, }    # reove trailing slashes
+foreach (@metrics_path) { s,/$,, }    # remove trailing slashes
 
 @ISOLatin1Encoding = qw(
  .notdef .notdef .notdef .notdef .notdef .notdef .notdef .notdef
@@ -265,7 +265,7 @@ sub new
 	   my($wx)   = /\bWX\s+(\d+)\s*;/;
 	   my($bbox)    = /\bB\s+([^;]+);/;
 	   $bbox =~ s/\s+$//;
-	   # Should also parse lingature data (format: L successor lignature)
+	   # Should also parse ligature data (format: L successor ligature)
 	   $self->{'wx'}{$name} = $wx;
 	   $self->{'bbox'}{$name} = $bbox;
 	   next;
